@@ -1,8 +1,15 @@
 package com.kh.board.view;
 
+import java.util.Scanner;
+
+import com.kh.board.controller.BoardController;
+
 public class BoardView {
 	// 입력을 위한 Scanner변수 선언 및 초기화
 	// 기능 실행을 위한 BoardController 변수 선언 및 초기화.
+	private Scanner sc = new Scanner(System.in);
+	private BoardController bc = new BoardController();
+	
 	String memberId = null;
 	/**
 	 * 로그인 기능.
@@ -13,8 +20,15 @@ public class BoardView {
 	public void login() {
 		System.out.println("### 게시판 서비스###");
 		System.out.println("서비스 이용을 위해 로그인을 진행해주세요.");
-		System.out.print("ID");
-		System.out.print("PWD");		
+		System.out.print("ID : ");
+		String id = sc.nextLine();
+		
+		System.out.print("PWD : ");
+		String pwd = sc.nextLine();
+		
+		memberId = id;
+		String memberPwd = pwd;
+		bc.logIn(memberId, memberPwd);		
 		
 	}
 	
@@ -33,6 +47,20 @@ public class BoardView {
 			System.out.println("4. 게시판 수정하기");
 			System.out.println("5. 게시판 삭제하기");			
 			System.out.println("9. 끝");			
+			
+			System.out.print("이용할 메뉴 선택");
+			int menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch(menu) {
+			case 1: selectBoardList(); break;
+			case 2: selectBoard(); break;
+			case 3: insertBoard(); break;
+			case 4: updateBoard(); break;
+			case 5: deleteBoard(); break; 
+			case 9: System.out.println("프로그램을 종료합니다."); return;
+			default : System.out.println("잘못된 메뉴, 다시 입력해주세요.");
+			}
 		}
 	}
 	/** 
@@ -42,6 +70,7 @@ public class BoardView {
 	 * */
 	public void selectBoardList() {
 		System.out.println("게시글 번호\t게시글 제목\t작성자\t작성시간");
+		bc.selectAll();
 	}
 	
 	/** 
@@ -81,7 +110,14 @@ public class BoardView {
 		
 	}
 	
-	
+	public void displayFail(String string) {
+		System.out.println(string);
+		
+	}
+
+	public void displaySeuccess(String string) {
+		System.out.println(string);
+	}
 	
 	
 	

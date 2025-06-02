@@ -13,6 +13,10 @@ public interface BoardService {
 	 * @return 조회된 사용자의 수
 	 */
 	int login(String memberId, String MemberPwd);
+//	public int login(String memberId, String MemberPwd) {
+//		Connection conn = JDBCTemplate.getConnection();
+//		
+//	};
 
 	/**
 	 * 게시글 등록용 메서드

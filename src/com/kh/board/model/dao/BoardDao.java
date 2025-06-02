@@ -5,5 +5,5 @@ package com.kh.board.model.dao;
  * 단, sql문은 resources/query.xml에 보관/관리한다.
  * */
 public class BoardDao {
-
+	
 }
